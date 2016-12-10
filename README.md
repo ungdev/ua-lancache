@@ -1,7 +1,7 @@
 # LanCache
 
 Mis en place à l'UTT Arena 2016.
-Vois la [documentation d'installation](install.md)
+Voir la [documentation d'installation](install.md)
 
 -------------------------------
 
