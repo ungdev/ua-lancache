@@ -2,7 +2,7 @@
 
 L'objectif d'un LanCache est de mettre en cache local des fichiers d'install / MaJ de jeux en réseaux, i.e. de les télécharger une fois puis de les servir en local, afin d'éviter de saturer les liens externes avec des DL de jeux.
 
-Les fichiers de configurations, scripts pertinents, ainsi que le présent guide se trouvent sur un dépôt Git. Merci de le cloner quelque part : `git clone `
+Les fichiers de configurations, scripts pertinents, ainsi que le présent guide se trouvent sur un dépôt Git. Merci de le cloner quelque part : `git clone git@github.com:ungdev/ua-lancache.git`
 
 ## Réseau
 
