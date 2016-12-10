@@ -1,32 +1,24 @@
 # Lancache UTT Arena
 
-Faute d'espace de doc dédié à l'UA, cette page va ici.
-Elle présente des infos succinctes sur l'installation d'une machine de LanCache, afin d'éviter de rechercher la conf tous les ans.
 L'objectif d'un LanCache est de mettre en cache local des fichiers d'install / MaJ de jeux en réseaux, i.e. de les télécharger une fois puis de les servir en local, afin d'éviter de saturer les liens externes avec des DL de jeux.
 
-Les fichiers de configurations, scripts pertinents, ainsi que le présent guide se trouvent sur un dépôt Git. Merci de le cloner quelque part : `git clone --URL repo UNG--`
+Les fichiers de configurations, scripts pertinents, ainsi que le présent guide se trouvent sur un dépôt Git. Merci de le cloner quelque part : `git clone `
 
-## Hardware / Optis OS / FS
-
-Voir avec T. Chauchefoin.
-
-## Logiciel
-
-### Réseau
+## Réseau
 
 Configurez une IP classique sur l'interface principale de la machine (ici 10.50.0.1), et 6 IPs virtuelles (10.50.0.3-8 en 2016). Celles-ci devront être résolues avec le nom d'hôte donné dans la config du cache, afin de permettre l'interception correcte des NDD sans SNI par Nginx.
 
-### Firewall
+## Firewall
 
 Le cas échéant, commencez par désactiver les règles ipTables interdisant les connexions HTTP à la machine (probable si sous CentOS). Un script _ad hoc_ est disponible dans le dépôt (cf. supra), fichier `fw_stop.sh`.
 
-### DNS
+## DNS
 
 Un récurseur DNS compatible RPZ (cf. [RFC draft-vixie-dns-rpz-00](https://tools.ietf.org/html/draft-vixie-dns-rpz-00)) est requis : en effet, le LanCache doit pouvoir intercepter toute requête de DL à destination des CDN des éditeurs. Par conséquent, ce serveur doit être adopté par tous les joueurs. Il est recommandé de le pousser par DHCP, et de bloquer le trafic sur le port 53 vers toute autre machine.  
 Nous suggérons [PowerDNS](https://www.powerdns.com/), à installer depuis leurs dépôts ([instructions](https://repo.powerdns.com/)). Vous pouvez également installer le serveur d'autorité, afin de gérer la résolution des noms à l'UA.  
 A cet effet, les fichiers de config associés sont dans le répertoire `dns` du dépôt. Le serveur d'autorité est configuré pour écouter sur le port 53, répondre à toute requête pur laquelle il fait autorité, et sinon la transférer au récurseur sur le port 8953, qui loade les zones RPZ spécifiées dans son fichier de configuration additionnelle LUA, renvoie la réponse-mensonge si elle existe, sinon effectue une récursion normale.
 
-### Compiler NginX
+## Compiler NginX
 
 Installez les paquets requis pour la compilation :
 `yum -y install gcc gcc-c++ make zlib-devel pcre-devel openssl-devel`
@@ -56,7 +48,7 @@ chkconfig --level 345 nginx on
 service nginx start
 ```
 
-### Config LanCache
+## Config LanCache
 
 Copiez ensuite les fichiers pertinents depuis le dépôt dans le répertoire de conf Nginx (/etc/nginx) :
   * lancache
