@@ -1,0 +1,46 @@
+$TTL 60s;
+$ORIGIN ua.
+@          SOA dns.ua. ung.utt.fr ( 1 20m 15m 1d 2h)
+           NS dns.ua.
+; begin RPZ RR definitions
+
+
+lancache-steam		A 10.50.0.3
+cs.steampowered.com 						CNAME  lancache-steam.
+*.cs.steampowered.com 						CNAME  lancache-steam.
+content1.steampowered.com 					CNAME  lancache-steam.
+content2.steampowered.com 					CNAME  lancache-steam.
+content3.steampowered.com 					CNAME  lancache-steam.
+content4.steampowered.com 					CNAME  lancache-steam.
+content5.steampowered.com 					CNAME  lancache-steam.
+content6.steampowered.com 					CNAME  lancache-steam.
+content7.steampowered.com 					CNAME  lancache-steam.
+content8.steampowered.com 					CNAME  lancache-steam.
+*.hsar.steampowered.com.edgesuite.net 		CNAME  lancache-steam.
+*.akamai.steamstatic.com 					CNAME  lancache-steam.
+content-origin.steampowered.com 			CNAME  lancache-steam.
+client-download.steampowered.com			CNAME  lancache-steam.
+
+lancache-riot		A 10.50.0.4
+l3cdn.riotgames.com		A 10.50.0.4
+
+lancache-blizzard 	A 10.50.0.5
+dist.blizzard.com.edgesuite.net		CNAME lancache-blizzard.
+llnw.blizzard.com					CNAME lancache-blizzard.
+dist.blizzard.com					CNAME lancache-blizzard.
+blizzard.vo.llnwd.net				CNAME lancache-blizzard.
+blzddist1-a.akamaihd.net. 	CNAME lancache-blizzard.
+blzddist2-a.akamaihd.net. 	CNAME lancache-blizzard.
+blzddist1-b.akamaihd.net. 	CNAME lancache-blizzard.
+blzddist2-b.akamaihd.net.	CNAME lancache-blizzard.
+
+
+lancache-hirez 		A 10.50.0.6
+hirez.http.internapcdn.net		CNAME lancache-hirez.
+
+lancache-origin 	A 10.50.0.7
+akamai.cdn.ea.com	CNAME lancache-origin.
+lvlt.cdn.ea.com		CNAME lancache-origin.
+
+lancache-sony 		A 10.50.0.8
+pls.patch.station.sony.com	CNAME lancache-sony.
