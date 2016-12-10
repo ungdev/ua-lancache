@@ -12,6 +12,10 @@ Voir avec T. Chauchefoin.
 
 ## Logiciel
 
+### Réseau
+
+Configurez une IP classique sur l'interface principale de la machine (ici 10.50.0.1), et 6 IPs virtuelles (10.50.0.3-8 en 2016). Celles-ci devront être résolues avec le nom d'hôte donné dans la config du cache, afin de permettre l'interception correcte des NDD sans SNI par Nginx.
+
 ### Firewall
 
 Le cas échéant, commencez par désactiver les règles ipTables interdisant les connexions HTTP à la machine (probable si sous CentOS). Un script _ad hoc_ est disponible dans le dépôt (cf. supra), fichier `fw_stop.sh`.
