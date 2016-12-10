@@ -16,7 +16,8 @@ Le cas échéant, commencez par désactiver les règles ipTables interdisant les
 
 Un récurseur DNS compatible RPZ (cf. [RFC draft-vixie-dns-rpz-00](https://tools.ietf.org/html/draft-vixie-dns-rpz-00)) est requis : en effet, le LanCache doit pouvoir intercepter toute requête de DL à destination des CDN des éditeurs. Par conséquent, ce serveur doit être adopté par tous les joueurs. Il est recommandé de le pousser par DHCP, et de bloquer le trafic sur le port 53 vers toute autre machine.  
 Nous suggérons [PowerDNS](https://www.powerdns.com/), à installer depuis leurs dépôts ([instructions](https://repo.powerdns.com/)). Vous pouvez également installer le serveur d'autorité, afin de gérer la résolution des noms à l'UA.  
-A cet effet, les fichiers de config associés sont dans le répertoire `dns` du dépôt. Le serveur d'autorité est configuré pour écouter sur le port 53, répondre à toute requête pur laquelle il fait autorité, et sinon la transférer au récurseur sur le port 8953, qui loade les zones RPZ spécifiées dans son fichier de configuration additionnelle LUA, renvoie la réponse-mensonge si elle existe, sinon effectue une récursion normale.
+A cet effet, les fichiers de config associés sont dans le répertoire `dns` du dépôt. Le serveur d'autorité est configuré pour écouter sur le port 53, répondre à toute requête pur laquelle il fait autorité, et sinon la transférer au récurseur sur le port 8953, qui loade les zones RPZ spécifiées dans son fichier de configuration additionnelle LUA, renvoie la réponse-mensonge si elle existe, sinon effectue une récursion normale.  
+En outre, nous proposons également une zone RPZ avec quelques trackers torrent, afin de limiter l'utilisation de BW. Vous pouvez la regénérer à partir d'une liste d'URL tracker de votre choix, *via* le script python dans `dns/createRpz.py`
 
 ## Compiler NginX
 
